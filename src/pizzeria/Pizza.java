@@ -9,6 +9,8 @@ package pizzeria;
  *
  * @author utku38
  */
-public class Pizza {
+public class Pizza extends Pizzeria {
+    private String nombre;
+    private s
     
 }
