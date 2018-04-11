@@ -86,17 +86,27 @@ public class Pedido {
     }
 
     public float calcTotalPedido(){
+        
+        
+        
+        
         return 0;
     }
     
     public void cancelar(){
         
     }
-    public void confirmar(){
+    
+    public void confirmar(EstadoPedido estadodelpedido){
+        
+        this.estadoPedido = estadodelpedido;
         
     }
     public void facturar(){
         
+        float totalItem=detallePedido.calcTotalItem();
+        float totalePedido = 0;
+        totalePedido+= totalItem;
     }
     public void terminar(){
         
