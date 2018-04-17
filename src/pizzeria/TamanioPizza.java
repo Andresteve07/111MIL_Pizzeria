@@ -11,4 +11,24 @@ package pizzeria;
  */
 public class TamanioPizza {
     
+    private int cantPorciones;
+    private String nombre;
+
+    public int getCantPorciones() {
+        return cantPorciones;
+    }
+
+    public void setCantPorciones(int cantPorciones) {
+        this.cantPorciones = cantPorciones;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 }

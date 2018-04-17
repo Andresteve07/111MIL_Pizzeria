@@ -9,7 +9,7 @@ package pizzeria;
  *
  * @author utku38
  */
-public class Pizza extends Pizzeria {
+public class Pizza{
     private String nombre;
     private float precio;
     private Pizza pizza;

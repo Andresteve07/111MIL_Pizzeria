@@ -11,4 +11,22 @@ package pizzeria;
  */
 public class EstadoPedido {
     
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public static boolean esFacturada(){
+        return true;
+    }
+    
+    public static boolean esPteFacturacion(){
+        return true;
+    }
+    
 }
