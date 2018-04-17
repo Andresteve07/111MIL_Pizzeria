@@ -5,12 +5,14 @@
  */
 package pizzeria;
 
+import java.util.ArrayList;
 /**
  *
  * @author utku29
  */
 public class Pedido {
     
+    private ArrayList<DetallePedido> detalles;
     private String nombreCliente;
     private int numero;
     private String fechaHoraCreacion;
@@ -27,6 +29,7 @@ public class Pedido {
         this.factura = factura;
         this.estadoPedido = estadoPedido;
         this.detallePedido = detallePedido;
+        this.detalles = new ArrayList<>();
     }
 
     public String getNombreCliente() {
@@ -84,6 +87,13 @@ public class Pedido {
     public void setDetallePedido(DetallePedido detallePedido) {
         this.detallePedido = detallePedido;
     }
+    
+    public void agregarDetalleDePedido(){
+        
+        
+        
+    }
+    
 
     public float calcTotalPedido(){
         
@@ -104,9 +114,8 @@ public class Pedido {
     }
     public void facturar(){
         
-        float totalItem=detallePedido.calcTotalItem();
-        float totalePedido = 0;
-        totalePedido+= totalItem;
+        
+        
     }
     public void terminar(){
         
