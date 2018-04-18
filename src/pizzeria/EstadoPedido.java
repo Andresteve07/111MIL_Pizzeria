@@ -6,12 +6,18 @@
 package pizzeria;
 
 /**
- *
+ * Esta clase modela el estsdo de un pedido
+ * 
+ * Los estados pasiblews se codifican de la siguiente manera
+ * 0 - espendiente
+ * 1 - enporroceso
+ * 2 - cancela
  * @author facu-
  */
 public class EstadoPedido {
     
     private String nombre;
+    private byte codigo;
 
     public String getNombre() {
         return nombre;
@@ -20,13 +26,26 @@ public class EstadoPedido {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public static boolean esFacturada(){
-        return true;
+
+    public byte getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(byte codigo) {
+        this.codigo = codigo;
     }
     
-    public static boolean esPteFacturacion(){
-        return true;
+    public static void esFacturada(){
+        
+    }
+    
+    public static void esPteFacturacion(){
+        
+    }
+
+    @Override
+    public String toString() {
+        return "EstadoPedido{" + "nombre=" + nombre + ", codigo=" + codigo + '}';
     }
     
 }

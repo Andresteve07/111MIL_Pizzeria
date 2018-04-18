@@ -29,6 +29,10 @@ public class TamanioPizza {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return "TamanioPizza{" + "cantPorciones=" + cantPorciones + ", nombre=" + nombre + '}';
+    }
     
 }

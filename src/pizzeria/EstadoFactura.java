@@ -12,7 +12,7 @@ package pizzeria;
 public class EstadoFactura {
     
     private String nombre;
-    private boolean codigo;
+    private byte codigo;
 
     public String getNombre() {
         return nombre;
@@ -22,20 +22,25 @@ public class EstadoFactura {
         this.nombre = nombre;
     }
 
-    public boolean getCodigo() {
+    public byte getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(boolean codigo) {
+    public void setCodigo(byte codigo) {
         this.codigo = codigo;
     }
     
-    public static boolean esGenerada(){
-        return true;
+    public static byte esGenerada(){
+        return 0;
     }
     
-    public static boolean esPteFacturacion(){
-        return true;
+    public static byte esPteFacturacion(){
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "EstadoFactura{" + "nombre=" + nombre + ", codigo=" + codigo + '}';
     }
     
 }

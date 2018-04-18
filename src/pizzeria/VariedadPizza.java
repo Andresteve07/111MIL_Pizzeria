@@ -29,6 +29,10 @@ public class VariedadPizza {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return "VariedadPizza{" + "ingredientes=" + ingredientes + ", nombre=" + nombre + '}';
+    }
     
 }
