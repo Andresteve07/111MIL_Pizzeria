@@ -1,18 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pizzeria;
 
 /**
  *
- * @author facu-
+ * @author Facundo y Agustina
  */
 public class VariedadPizza {
     
     private String ingredientes;
     private String nombre;
+
+    public VariedadPizza() {
+    }
+
+    public VariedadPizza(String ingredientes, String nombre) {
+        this.ingredientes = ingredientes;
+        this.nombre = nombre;
+    }
 
     public String getIngredientes() {
         return ingredientes;
@@ -29,6 +32,10 @@ public class VariedadPizza {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return "VariedadPizza{" + "ingredientes=" + ingredientes + ", nombre=" + nombre + '}';
+    }
     
 }
