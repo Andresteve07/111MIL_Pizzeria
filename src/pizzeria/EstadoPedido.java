@@ -19,6 +19,8 @@ public class EstadoPedido {
     private int codigo;
 
     public EstadoPedido() {
+        this.codigo = 0;
+        this.nombre = "Pendiente confirmación";
     }
 
     public EstadoPedido(String nombre, byte codigo) {
@@ -39,9 +41,32 @@ public class EstadoPedido {
     }
 
     public void setCodigo(int codigo) {
+        
+        switch(codigo){
+            case 0:
+                nombre="Pendiente confirmación";
+            
+            case 1:
+              nombre="En preparación";
+            
+            case 2:
+                nombre="Pendiente facturación";
+                
+            case 3:
+                nombre="Facturado";
+                
+            case 4:
+                nombre="Cancelado";
+                
+            default:
+                System.out.println("Error");
+                break;
+                
+            }
         this.codigo = codigo;
-    }
-    
+        
+        }
+        
     public boolean pteConfirmacion(){
         return this.codigo == 0;
     }
@@ -53,6 +78,7 @@ public class EstadoPedido {
     
     public boolean esFacturada(){
         return this.codigo == 3;
+       
     }
     
     public boolean esPteFacturacion(){
