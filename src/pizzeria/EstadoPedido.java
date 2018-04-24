@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pizzeria;
 
 /**
- * Esta clase modela el estsdo de un pedido
+ * Esta clase modela el estado de un pedido.
  * 
- * Los estados pasiblews se codifican de la siguiente manera
- * 0 - espendiente
- * 1 - enporroceso
- * 2 - cancela
- * @author facu-
+ * Los estados posibles se codifican de la siguiente manera:
+ * 
+ * 0 - Pendiente confirmación.
+ * 1 - En preparación.
+ * 2 - Pendiente facturación.
+ * 3 - Facturado.
+ * 4 - Cancelado.
+ * 
+ * @author Facundo y Agustina
  */
 public class EstadoPedido {
     
     private String nombre;
-    private byte codigo;
+    private int codigo;
+
+    public EstadoPedido() {
+    }
+
+    public EstadoPedido(String nombre, byte codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -27,20 +34,33 @@ public class EstadoPedido {
         this.nombre = nombre;
     }
 
-    public byte getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(byte codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
     
-    public static void esFacturada(){
-        
+    public boolean pteConfirmacion(){
+        return this.codigo == 0;
     }
     
-    public static void esPteFacturacion(){
-        
+    public boolean enPreparacion(){
+        return this.codigo == 1;
+    }
+    
+    
+    public boolean esFacturada(){
+        return this.codigo == 3;
+    }
+    
+    public boolean esPteFacturacion(){
+        return this.codigo == 2;
+    }
+    
+    public boolean esCancelado(){
+        return this.codigo == 4;
     }
 
     @Override

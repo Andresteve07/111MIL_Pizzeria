@@ -1,18 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pizzeria;
 
 /**
- *
- * @author facu-
+ * Esta clase modela el estado de una factura.
+ * 
+ * Los estados posibles se codifican de la siguiente manera:
+ * 
+ * 0 - Generada
+ * 1 - Cancelada
+ * 
+ * @author Facundo y Agustina
  */
 public class EstadoFactura {
     
     private String nombre;
     private byte codigo;
+
+    public EstadoFactura() {
+    }
+
+    public EstadoFactura(String nombre, byte codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -30,12 +39,21 @@ public class EstadoFactura {
         this.codigo = codigo;
     }
     
-    public static byte esGenerada(){
-        return 0;
+    public void ponerCancelado(){
+        this.codigo = 1;
     }
     
-    public static byte esPteFacturacion(){
-        return 0;
+    public void ponerGenerado(){
+        this.codigo=0;
+    }
+    
+    public boolean esGenerada(){
+        return (this.codigo == 0);
+        
+    }
+    
+    public boolean esCancelada(){
+        return (this.codigo == 1);
     }
 
     @Override
