@@ -5,6 +5,7 @@
  */
 package pizzeria;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,24 +19,24 @@ public class Factura {
     private Date fechaHoraEmision;
     private int numero;
     private EstadoFactura estado;
-    private DetallePedido detalleFactura;
+    private ArrayList<DetallePedido> pedidos;
+
 
     /**
      * CONSTRUCTORES
      */
     public Factura() {
+        estado = new EstadoFactura();
     }
 
-    public Factura(Date fechaHoraEmision, int numero,EstadoFactura estado,DetallePedido detalle) {
+    public Factura(Date fechaHoraEmision, int numero,EstadoFactura estado) {
         this.fechaHoraEmision = fechaHoraEmision;
         this.numero = numero;
-        this.estado = estado;
-        this.detalleFactura = detalle;
+        estado = new EstadoFactura();
     }
 
     /**
-     * METODOS GET
-     * @return 
+     * METODOS GET 
      */
     public int getNumero() {
         return this.numero;
@@ -44,19 +45,17 @@ public class Factura {
     public Date getFechaHoraEmision() {
         return this.fechaHoraEmision;
     }
-    
-    public DetallePedido getDetalleFactura(){
-        return this.detalleFactura;
+
+    public EstadoFactura getEstado() {
+        return estado;
     }
-    
-    public EstadoFactura getEstado(){
-        return this.estado;
+
+    public ArrayList<DetallePedido> getPedidos() {
+        return pedidos;
     }
-    
     
     /**
      * METODOS SET
-     * @param estado
      */
     public void setEstado(EstadoFactura estado) {
         this.estado= estado;
@@ -70,26 +69,10 @@ public class Factura {
         this.numero = numero;
     }
     
-    public void setDetalleFactura(DetallePedido detalle){
-        this.detalleFactura = detalle;
-    }
-    
-    /**
-     * OTROS METODOS
-     */
-    
-    @Override
-    public String toString() {
-        return "Fecha: "+this.fechaHoraEmision+"\nNumero: "+this.numero+
-                "\nEstado: "+this.estado.toString()+"\nDetalle: "+this.detalleFactura.toString();
-    }
-    
-    public void buscarItemsAFacturar(){
-    
-    }
-    
-    public float calcTotalFactura() {
-        return 0;
+    public void setDetalle(ArrayList<DetallePedido> detallePedido) {
+        for(DetallePedido pedido : detallePedido) {
+            pedidos.add(pedido);
+        }
     }
     
 }
