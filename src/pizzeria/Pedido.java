@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class Pedido {
     
+    /********** Parametros ****************/
+    
     private final ArrayList<DetallePedido> detalles;
     private String nombreCliente;
     private int numero;
@@ -21,6 +23,8 @@ public class Pedido {
     private EstadoPedido estadoPedido;
     private DetallePedido detallePedido;
 
+    /*********** Constructores********************/
+    
     public Pedido(String nombreCliente, int numero, String fechaHoraCreacion, String fechaHoraEntrega, Factura factura, EstadoPedido estadoPedido, DetallePedido detallePedido) {
         this.nombreCliente = nombreCliente;
         this.numero = numero;
@@ -31,81 +35,106 @@ public class Pedido {
         this.detallePedido = detallePedido;
         this.detalles = new ArrayList<>();
     }
-
+    
+    /*
+    *
+    * Metodos GET
+    *
+    */
     public String getNombreCliente() {
         return nombreCliente;
     }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
+    
     public int getNumero() {
         return numero;
+    }
+    
+    public String getFechaHoraCreacion() {
+        return fechaHoraCreacion;
+    }
+    
+    public String getFechaHoraEntrega() {
+        return fechaHoraEntrega;
+    }
+    
+    public EstadoPedido getEstadoPedido() {
+        return estadoPedido;
+    }
+    
+    public Factura getFactura() {
+        return factura;
+    }
+    
+    public DetallePedido getDetallePedido() {
+        return detallePedido;
+    }
+    
+    /********************************************************************/
+    
+    /*
+    *
+    * Metodos SET
+    *
+    */
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
-    public String getFechaHoraCreacion() {
-        return fechaHoraCreacion;
-    }
-
     public void setFechaHoraCreacion(String fechaHoraCreacion) {
         this.fechaHoraCreacion = fechaHoraCreacion;
     }
-
-    public String getFechaHoraEntrega() {
-        return fechaHoraEntrega;
-    }
-
+    
     public void setFechaHoraEntrega(String fechaHoraEntrega) {
         this.fechaHoraEntrega = fechaHoraEntrega;
     }
-
-    public Factura getFactura() {
-        return factura;
-    }
-
+    
     public void setFactura(Factura factura) {
         this.factura = factura;
-    }
-
-    public EstadoPedido getEstadoPedido() {
-        return estadoPedido;
     }
 
     public void setEstadoPedido(EstadoPedido estadoPedido) {
         this.estadoPedido = estadoPedido;
     }
 
-    public DetallePedido getDetallePedido() {
-        return detallePedido;
-    }
-
     public void setDetallePedido(DetallePedido detallePedido) {
         this.detallePedido = detallePedido;
     }
     
+    
+    /*************************************************************/
+    
+    /*
+    *
+    * Otros Metodos
+    *
+    */
+    
     public void agregarDetalleDePedido(){
         
+        if(estadoPedido.getCodigo()==0 || estadoPedido.getCodigo()==1)
         detalles.add(detallePedido);
         
     }
     
 
     public float calcTotalPedido(){
+        float total=0;
         
+        for (DetallePedido detalle : detalles) {
+            total += detalle.calcTotalItem();
+        }
         
-        
-        
-        return 0;
+        return total;
     }
     
     public void cancelar(){
         
-        this.detalles.clear();
+        if(estadoPedido.getCodigo()==4){
+        this.detalles.clear();}
         
     }
     
@@ -116,16 +145,18 @@ public class Pedido {
     }
     public void facturar(){
         
-        if(EstadoPedido.esFacturada()==true){
+        if(estadoPedido.getCodigo()==2){
             
-            new Factura();
+            this.factura = new Factura();
+            this.factura.setDetalle(detalles);
             
         }
         
     }
-    public void terminar(){
+    public boolean terminar(){
         
-        
-        
-    }   
+        return estadoPedido.getCodigo()==3;
+    }
+    
+    
 }
