@@ -9,6 +9,12 @@ package pizzeria;
  *
  * @author utku30
  */
+
+/**
+ * Este clase representa a el detaale de un pedido descrito en la conmsigna del 2do tp del 11mil.
+ * Como una modificacion a la consigna el metodo cancwelar sera realizado por la clase pedido.
+ * @author utku32
+ */
 public class DetallePedido  {
     
     private int cantidad;
@@ -45,15 +51,16 @@ public class DetallePedido  {
         resultado=this.cantidad*this.precioOriginalUnitario;
         return resultado;
     }
-    public boolean cancelar(){
-    boolean estadoPedido=true;
-    return estadoPedido;
-    }
+    
    
-    public DetallePedido(int cantidad, float precioOriginalUnitario, Pizza pizza) {
+    public DetallePedido(int cantidad, Pizza pizza) {
         this.cantidad = cantidad;
-        this.precioOriginalUnitario = precioOriginalUnitario;
+        this.precioOriginalUnitario = pizza.getPrecio();
         this.pizza = pizza;
+    }
+    
+    public String toString(){
+        return "Detalle: Cantidad: " + this.cantidad + "    Pizza: " + this.pizza + "    PrecioUnitarioOrig: " + this.precioOriginalUnitario + "     Total: " + this.calcTotalItem();
     }
 }
 
