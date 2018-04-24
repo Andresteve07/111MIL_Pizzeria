@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Pedido {
     
-    private ArrayList<DetallePedido> detalles;
+    private final ArrayList<DetallePedido> detalles;
     private String nombreCliente;
     private int numero;
     private String fechaHoraCreacion;
@@ -90,7 +90,7 @@ public class Pedido {
     
     public void agregarDetalleDePedido(){
         
-        
+        detalles.add(detallePedido);
         
     }
     
@@ -105,6 +105,8 @@ public class Pedido {
     
     public void cancelar(){
         
+        this.detalles.clear();
+        
     }
     
     public void confirmar(EstadoPedido estadodelpedido){
@@ -114,10 +116,16 @@ public class Pedido {
     }
     public void facturar(){
         
-        
+        if(EstadoPedido.esFacturada()==true){
+            
+            new Factura();
+            
+        }
         
     }
     public void terminar(){
         
-    }
+        
+        
+    }   
 }
