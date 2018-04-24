@@ -13,12 +13,12 @@ package pizzeria;
 public class EstadoFactura {
     
     private String nombre;
-    private byte codigo;
+    private int codigo;
 
     public EstadoFactura() {
     }
 
-    public EstadoFactura(String nombre, byte codigo) {
+    public EstadoFactura(String nombre, int codigo) {
         this.nombre = nombre;
         this.codigo = codigo;
     }
@@ -31,11 +31,11 @@ public class EstadoFactura {
         this.nombre = nombre;
     }
 
-    public byte getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(byte codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
     
