@@ -61,6 +61,14 @@ public class Factura {
         return TotalAPagar;
     }
     
+    public ArrayList<String> getDetalleFactura() {
+        ArrayList<String> detallesDePedido = new ArrayList<>();
+        for (DetallePedido detalle : pedidos) {
+            detallesDePedido.add(detalle.toString());
+        }
+        return detallesDePedido;
+    }
+    
     /**
      * METODOS SET
      */
