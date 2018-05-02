@@ -29,11 +29,10 @@ public class Factura {
         estado = new EstadoFactura();
     }
 
-    public Factura(Date fechaHoraEmision, int numero,EstadoFactura estado, float TotalAPagar) {
+    public Factura(Date fechaHoraEmision, int numero) {
         this.fechaHoraEmision = fechaHoraEmision;
         this.numero = numero;
         estado = new EstadoFactura();
-        this.TotalAPagar = TotalAPagar;
     }
 
     /**
@@ -56,7 +55,18 @@ public class Factura {
     }
 
     public float getTotalAPagar() {
+        for (DetallePedido pedido : pedidos) {
+            TotalAPagar += pedido.calcTotalItem();
+        }
         return TotalAPagar;
+    }
+    
+    public ArrayList<String> getDetalleFactura() {
+        ArrayList<String> detallesDePedido = new ArrayList<>();
+        for (DetallePedido detalle : pedidos) {
+            detallesDePedido.add(detalle.toString());
+        }
+        return detallesDePedido;
     }
     
     /**
@@ -84,7 +94,6 @@ public class Factura {
         this.TotalAPagar = TotalAPagar;
     }
     
-    
     /**
      * OTROS METODOS
      */
@@ -92,15 +101,6 @@ public class Factura {
         for (DetallePedido pedido : pedidos) {
             System.out.println(pedido.toString());
         }
-    }
-    
-    public void imprimirTotalAPagar() {
-        float total = 0;
-        for (DetallePedido pedido : pedidos) {
-            total += pedido.calcTotalItem();
-        }
-        
-        System.out.println("El total a pagar es: " + total);
     }
     
 }
